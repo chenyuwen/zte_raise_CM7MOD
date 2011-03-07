@@ -1,21 +1,45 @@
 
-For 32-bit & 64-bit systems:
-git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev sun-java6-jdk pngcrush schedtool
-For 64-bit only systems:
-g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline5-dev gcc-4.3-multilib g++-4.3-multilib
-NOTE: On Ubuntu 10.10, and variants, you need to enable the parter repository to install sun-java6-jdk:
+---------------
+构建环境：
+---------------
+
+添加java6源
+ On Ubuntu 10.10, and variants, you need to enable the parter repository to install sun-java6-jdk:
 add-apt-repository "deb http://archive.canonical.com/ maverick partner" 
 
+安装相关依赖
+For 32-bit & 64-bit systems:
+sudo apt-get install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev sun-java6-jdk pngcrush schedtool
+For 64-bit only systems:
+sudo apt-get install g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline5-dev gcc-4.3-multilib g++-4.3-multilib
+
+-----------------
+下载源码：
+-----------------
+
+构建目录
 mkdir -p ~/bin 
-mkdir -p ~/android/system 
+mkdir -p ~/*源码目录*
 
-Install the Repository
-
+下载安装repo
 Enter the following to download make executable the "repo" binary:
 curl http://android.git.kernel.org/repo > ~/bin/repo 
 chmod a+x ~/bin/repo
-NOTE: You may need to reboot for these changes to take effect.
-Now enter the following to initialize the repository:
-cd ~/android/system/ 
+
+同步源码
+cd ~/*源码目录*
 repo init -u git://github.com/CyanogenMod/android.git -b gingerbread 
-repo sync -j16
+repo sync -j5
+
+--------------------
+打上补丁
+-------------------
+下载此补丁覆盖到源码目录
+
+
+------------------
+编译
+------------------
+build/env*
+lunch
+make -j2
