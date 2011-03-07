@@ -1,0 +1,21 @@
+
+For 32-bit & 64-bit systems:
+git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev sun-java6-jdk pngcrush schedtool
+For 64-bit only systems:
+g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline5-dev gcc-4.3-multilib g++-4.3-multilib
+NOTE: On Ubuntu 10.10, and variants, you need to enable the parter repository to install sun-java6-jdk:
+add-apt-repository "deb http://archive.canonical.com/ maverick partner" 
+
+mkdir -p ~/bin 
+mkdir -p ~/android/system 
+
+Install the Repository
+
+Enter the following to download make executable the "repo" binary:
+curl http://android.git.kernel.org/repo > ~/bin/repo 
+chmod a+x ~/bin/repo
+NOTE: You may need to reboot for these changes to take effect.
+Now enter the following to initialize the repository:
+cd ~/android/system/ 
+repo init -u git://github.com/CyanogenMod/android.git -b gingerbread 
+repo sync -j16
